@@ -1,0 +1,39 @@
+* Converting:
+*
+* Conversion tools for DOW DORADE formatted radar to CF/radial netCDF files:
+* ./codetools/python/radx
+*
+* Config file for python script - radx_config.py
+* Only need add iop folder ID (e.g. 'iop6') as dict key w/ relevant dict entries to configure
+* Will convert all keys listed in Convert_DOW_dorade2cfradial.py (no more no less)
+* 
+* Parameter file for radx convert to execute at ../codetools/python/radx/params/iop#_params
+* Edit last set of lines in file to adjust rotation, elevation, lat/lon/altitude etc...
+*
+* Azimuth Offset Applied: See IOP summary for truck heading. Offset from true north ADDED to azimuth
+* Elevation Offset Applied: 1 degree offset ADDED to all sweeps (As per Alycia/Karen @ CSWR)
+* Latitude/Longitude/Elevation Override: Lat/Lon/Z specified as determined by in-DOW GPS and noted in logs
+*
+* NetCDF4 format, compression level 5
+*
+* All variables written, no modificiation or scaling applied HOWEVER per CSWR:
+* At the last calibration with 88-D (August), DOW-7 was about -6.5 dBz from that of the 88-D.
+
+
+* Plotting:
+*
+* Easily plotted and manipulated with pyART/artview & anaconda python
+* anaconda: https://github.com/ContinuumIO
+* pyart: https://github.com/ARM-DOE/pyart
+* artview: https://github.com/nguy/artview
+*
+* Tip: On CHPC machines, create and load a new(Local) anaconda environment, then use flag
+* -n my_env to install the desired packages to your custom environment to avoid
+* any need to get CHPC to install the package universally or any need for admin/root rights
+*
+* Python plotting w/ terrain basemap provided in directory:
+* ./codetools/python/plotting
+*
+* ./codetools/python/plotting/pyart_mod contains modified pyart package file 'radarmapdisplay.py' 
+* that should be imported or replaced in the pyart directory in order to add the arcmap basemap. 
+* The basemap type and xpixel/dpi resolution may be changed there as well
